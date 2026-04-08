@@ -61,6 +61,11 @@ def rerouter_script() -> Response:
     )
 
 
+@app.route("/", methods=["get"])
+def show():
+    return _json_response({"Server Started"}, 200)
+    
+
 @app.route("/convert-xml", methods=["POST", "OPTIONS"])
 def convert_xml() -> Response:
     if request.method == "OPTIONS":
