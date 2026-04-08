@@ -1,5 +1,5 @@
 from __future__ import annotations
-
+from flask_cors import CORS
 import json
 import sys
 import tempfile
@@ -18,6 +18,7 @@ import stage4  # noqa: E402  (local file import)
 
 app = Flask(__name__)
 
+CORS(app) 
 
 def _json_response(payload: dict, status: int) -> Response:
     res = Response(
@@ -25,9 +26,9 @@ def _json_response(payload: dict, status: int) -> Response:
         status=status,
         mimetype="application/json",
     )
-    res.headers["Access-Control-Allow-Origin"] = "*"
-    res.headers["Access-Control-Allow-Methods"] = "POST, OPTIONS"
-    res.headers["Access-Control-Allow-Headers"] = "Content-Type"
+    # res.headers["Access-Control-Allow-Origin"] = "*"
+    # res.headers["Access-Control-Allow-Methods"] = "POST, OPTIONS"
+    # res.headers["Access-Control-Allow-Headers"] = "Content-Type"
     return res
 
 
